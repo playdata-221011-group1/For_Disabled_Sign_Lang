@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>수어 인덱스</h3>
+
+<form action="/search" method="get">
+    원하는 수어 검색: <input type="text" name="title">
+    <input type="submit" value="검색">
+</form>
+<br/>
+
+<ul>
+        {% for i in res %}
+    <li><a href="/search?title={{i.title}}">{{i.alternativeTitle}}</a></li>
+        {% endfor %}
+</ul>
+</body>
+</html>
