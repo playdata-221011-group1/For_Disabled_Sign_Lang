@@ -16,16 +16,10 @@ app.register_blueprint(bus_bp)
 def index():
     return render_template('index.html')
 
-@app.route('/sindex')
+@app.route('/sign/main')
 def sindex():
     res = sLanguageService.get_all()
-    return render_template('sindex.html', res=res, enumerate=enumerate)
-
-
-@app.route('/bindex')
-def bindex():
-    return render_template('bindex.html')
-
+    return render_template('sign_main.html', res=res, enumerate=enumerate)
 
 # 상세 수어 페이지연결
 @app.route('/search')

@@ -1,5 +1,5 @@
 from flask import render_template, request, Blueprint
-from bus_service import BusService
+from .bus_service import BusService
 
 bus_service = BusService()
 
