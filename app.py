@@ -1,16 +1,20 @@
 from flask import Flask, render_template, request
-from For_Disabled_Sign_Lang.slanguage.slanguage import SLanguageService
+from slanguage.slanguage import SLanguageService
+from bus.bus_main import bp as bus_bp
 
 app = Flask(__name__)
 sLanguageService = SLanguageService()
 
-
 # 인덱스화면 연결
+app.secret_key = 'asfaf' #세션 사용시 시크릿 키 설정
 
-@app.route('/')
+#생성한 블루프린트를 flask 객체에 등록
+app.register_blueprint(bus_bp)
+
+#메인페이지
+@app.route("/")
 def index():
     return render_template('index.html')
-
 
 @app.route('/sindex')
 def sindex():
