@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from slanguage.slanguage import SLanguageService
-from bus.bus_main import bp as bus_bp
+from bus.bus_main import bp as bus_bp, low_service
 import requests
 from flask import Flask, render_template, request, json, redirect, flash
 from For_Disabled_Sign_Lang.slanguage.slanguage import SLanguageService
@@ -122,7 +122,17 @@ def kakao():
     return redirect('/sign/main')
 
 
-
+# @app.route('/station')
+# def low_bus():
+#     station = request.args.get('station')
+#     low_list = low_service.getBusStopName()
+#     res = low_service.low_bus_list()
+#     return render_template('bus_low.html', low=low_list, station=station , res=res)
+#
+# @app.route('/station1')
+# def station_list():
+#     res = low_service.low_bus_list()
+#     return render_template('station.html',res=res)
 
 
 
