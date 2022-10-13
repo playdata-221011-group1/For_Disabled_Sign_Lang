@@ -7,6 +7,6 @@ bp = Blueprint('bus', __name__, url_prefix='/bus')
 
 @bp.route("/main")
 def bus_main():
-    bus_list = bus_service.bus_list()
+    trans = bus_service.trans_list()
 
-    return render_template("bus_main.html", bus_list=bus_list)
+    return render_template("bus_main.html", trans=trans)
