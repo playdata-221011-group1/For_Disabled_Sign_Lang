@@ -24,10 +24,9 @@
     <input type="submit" value="카톡전송">
 </form>
 <br/>
-
 <ul>
         {% for i in res %}
-    <li><a href="/search?title={{i.title}}">{{i.alternativeTitle}}</a></li>
+    <li><a href="/search?title={{i.title}}">{{i.title}}</a></li>
         {% endfor %}
 </ul>
 </body>

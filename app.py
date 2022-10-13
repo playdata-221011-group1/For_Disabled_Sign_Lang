@@ -37,7 +37,6 @@ def bindex():
     res = busService.get_all()
     return render_template('bus_main.html', res=res)
 
-
 # 상세 수어 페이지연결
 @app.route('/search')
 def search():
@@ -84,13 +83,23 @@ def kakao():
         response = requests.post(url, data=data)
         tokens = response.json()
 
+        # kakao_code.json 파일 저장
+        with open("kakao_code.json", "w") as fp:
+            json.dump(tokens, fp)
+
+        # #토큰 읽어오기
+        # with open("kakao_code.json", "r") as fp:
+        #     tokens = json.load(fp)
+
+
+
 
 
         url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
-
+        #'U9H6buL9TAMQks1oCSxja8GwUjteLotV_tBaQ_rlCisM0wAAAYPPEvlA'
         # 사용자 토큰
         headers = {
-            "Authorization": "Bearer " + 'lz1ORbijrDexEW64xuZB8qRxd0XKiowfotdgWGAdCj102wAAAYPObHo8' ### 유효시간 6시간 / 발표자가 다시 발급 받아야 할 수도 있음  ###
+            "Authorization": "Bearer " + 'U9H6buL9TAMQks1oCSxja8GwUjteLotV_tBaQ_rlCisM0wAAAYPPEvlA' ### 유효시간 6시간 / 발표자가 다시 발급 받아야 할 수도 있음  ###
         }
 
         data = {
@@ -114,6 +123,10 @@ def kakao():
         flash("전송 실패")
 
     return redirect('/sign/main')
+
+
+
+
 
 
 if __name__ == '__main__':

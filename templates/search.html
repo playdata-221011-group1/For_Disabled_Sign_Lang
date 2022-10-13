@@ -20,14 +20,14 @@
     {% for i in result[1] %}
     {% if title1 == i.title %}
     <tr>
-        <th>{{i.alternativeTitle}}</th>
+        <th>{{i.title}}</th>
         <br>
-    </tr>
+
     <tr>
+        <td><img src="{{i.imageObject}}"/></td>
+    </tr>
+    </tr>
         <td>{{i.description}}</td>
-    </tr>
-    <tr>
-        <td><img src="{{i.referenceIdentifier}}"/></td>
     </tr>
     <tr>
         <th><a href="{{i.url}}">{{i.url}}</a></th>
