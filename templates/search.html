@@ -1,43 +1,61 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert('{{messages[0]}}')
+        </script>
+    {% endif %}
+{% endwith %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="../static/css/nivo-lightbox.css" rel="stylesheet" />
+	<link href="../static/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+	<link href="../static/css/owl.carousel.css" rel="stylesheet" media="screen" />
+	<link href="../static/css/owl.theme.css" rel="stylesheet" media="screen" />
+	<link href="../static/css/animate.css" rel="stylesheet" />
+	<link href="../static/css/style.css" rel="stylesheet">
+	<link href="../static/color/default.css" rel="stylesheet">
 </head>
 <body>
-
-{% if title1 in result[2] %}
+<<<<<<< HEAD
+<div>
+    {% if title1 in result[2] %}
     <h3>{{title1}} 상세 화면</h3>
 {% endif %}
+=======
+
+<h3>{{title1}} 상세 화면</h3>
+>>>>>>> b0d8a75f05c2501a0cbfdaca4905c7291a932164
 
 
 <table style="text-align:center">
-
-    {% if title1 not in result[2] %}
-        검색어를 올바르게 입력하세요
-    {% else %}
-        {% for i in result[1] %}
-            {% if title1 == i.title %}
-                <tr>
-                    <th>{{i.alternativeTitle}}</th>
-                    <br>
-                </tr>
-                <tr>
-                    <td>{{i.description}}</td>
-                </tr>
-                <tr>
-                    <td><img src="{{i.referenceIdentifier}}"/></td>
-                </tr>
-                <tr>
-                    <th><a href="{{i.url}}">{{i.url}}</a></th>
-                    <br>
-                </tr>
-            {% endif %}
-        </tr>
-        {% endfor %}
-        </tr>
+    {% for i in result[1] %}
+    {% if title1 == i.title %}
+    <tr>
+        <th>{{i.alternativeTitle}}</th>
+        <br>
+    </tr>
+    <tr>
+        <td>{{i.description}}</td>
+    </tr>
+    <tr>
+        <td><img src="{{i.referenceIdentifier}}"/></td>
+    </tr>
+    <tr>
+        <th><a href="{{i.url}}">{{i.url}}</a></th>
+        <br>
+    </tr>
     {% endif %}
+    </tr>
+    {% endfor %}
+    </tr>
 </table>
 
+</div>
 </body>
 </html>
