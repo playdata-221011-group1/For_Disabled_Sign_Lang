@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-from flask import Flask, render_template, request
 
+from flask import Flask, render_template, request
 from slanguage.slanguage import SLanguageService
-=======
->>>>>>> b0d8a75f05c2501a0cbfdaca4905c7291a932164
 from bus.bus_main import bp as bus_bp
 import requests
 from flask import Flask, render_template, request, json, redirect, flash
@@ -20,24 +17,15 @@ app.secret_key = 'asfaf'  # 세션 사용시 시크릿 키 설정
 
 # 생성한 블루프린트를 flask 객체에 등록
 app.register_blueprint(bus_bp)
-
-<<<<<<< HEAD
-# 인덱스화면 연결
-
-@app.route('/')
-=======
-
 # 메인페이지 연결메서드
 @app.route("/")
->>>>>>> b0d8a75f05c2501a0cbfdaca4905c7291a932164
+
 def index():
     return render_template('index.html')
 
 
-<<<<<<< HEAD
-=======
+
 # 수화 메인 연결메서드
->>>>>>> b0d8a75f05c2501a0cbfdaca4905c7291a932164
 @app.route('/sign/main')
 def sindex():
     # 수화 전체리스트 numOfRows로 데이터 양 조절가능
@@ -45,8 +33,6 @@ def sindex():
     return render_template('sign_main.html', res=res, enumerate=enumerate)
 
 
-<<<<<<< HEAD
-=======
 # 버스 메인 연결메서드
 @app.route('/bindex')
 def bindex():
@@ -55,7 +41,7 @@ def bindex():
     return render_template('bus_main.html', res=res)
 
 
->>>>>>> b0d8a75f05c2501a0cbfdaca4905c7291a932164
+
 # 상세 수어 페이지연결
 @app.route('/search')
 def search():
