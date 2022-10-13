@@ -2,10 +2,11 @@
 from flask import Flask, render_template, request
 from slanguage.slanguage import SLanguageService
 from bus.bus_main import bp as bus_bp
+from bus.low_bus_main import bp as low_bus_bp
 import requests
 from flask import Flask, render_template, request, json, redirect, flash
-from For_Disabled_Sign_Lang.slanguage.slanguage import SLanguageService
-from For_Disabled_Sign_Lang.bus.bus import BusService
+from slanguage.slanguage import SLanguageService
+from bus.bus_service import BusService
 
 app = Flask(__name__)
 app.secret_key = 'asdf'
@@ -17,6 +18,7 @@ app.secret_key = 'asfaf'  # 세션 사용시 시크릿 키 설정
 
 # 생성한 블루프린트를 flask 객체에 등록
 app.register_blueprint(bus_bp)
+app.register_blueprint(low_bus_bp)
 # 메인페이지 연결메서드
 @app.route("/")
 
