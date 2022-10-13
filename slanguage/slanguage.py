@@ -1,5 +1,4 @@
-import requests, json
-import xmltodict
+import xmltodict, requests, json
 from flask import request
 
 

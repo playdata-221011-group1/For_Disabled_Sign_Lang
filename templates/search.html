@@ -1,3 +1,10 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert('{{messages[0]}}')
+        </script>
+    {% endif %}
+{% endwith %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,37 +13,30 @@
 </head>
 <body>
 
-{% if title1 in result[2] %}
-    <h3>{{title1}} 상세 화면</h3>
-{% endif %}
+<h3>{{title1}} 상세 화면</h3>
 
 
 <table style="text-align:center">
-
-    {% if title1 not in result[2] %}
-        검색어를 올바르게 입력하세요
-    {% else %}
-        {% for i in result[1] %}
-            {% if title1 == i.title %}
-                <tr>
-                    <th>{{i.alternativeTitle}}</th>
-                    <br>
-                </tr>
-                <tr>
-                    <td>{{i.description}}</td>
-                </tr>
-                <tr>
-                    <td><img src="{{i.referenceIdentifier}}"/></td>
-                </tr>
-                <tr>
-                    <th><a href="{{i.url}}">{{i.url}}</a></th>
-                    <br>
-                </tr>
-            {% endif %}
-        </tr>
-        {% endfor %}
-        </tr>
+    {% for i in result[1] %}
+    {% if title1 == i.title %}
+    <tr>
+        <th>{{i.alternativeTitle}}</th>
+        <br>
+    </tr>
+    <tr>
+        <td>{{i.description}}</td>
+    </tr>
+    <tr>
+        <td><img src="{{i.referenceIdentifier}}"/></td>
+    </tr>
+    <tr>
+        <th><a href="{{i.url}}">{{i.url}}</a></th>
+        <br>
+    </tr>
     {% endif %}
+    </tr>
+    {% endfor %}
+    </tr>
 </table>
 
 </body>

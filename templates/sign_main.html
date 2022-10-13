@@ -1,3 +1,10 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert('{{messages[0]}}')
+        </script>
+    {% endif %}
+{% endwith %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +18,11 @@
     원하는 수어 검색: <input type="text" name="title">
     <input type="submit" value="검색">
 </form>
+
+<form action="/kakao" method="get">
+    카톡으로 보낼 수어 : <input type="text" name="kakao">
+    <input type="submit" value="카톡전송">
+</form>
 <br/>
 
 <ul>
@@ -19,4 +31,5 @@
         {% endfor %}
 </ul>
 </body>
+
 </html>
