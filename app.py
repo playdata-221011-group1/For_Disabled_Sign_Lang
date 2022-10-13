@@ -6,10 +6,20 @@ import requests
 from flask import Flask, render_template, request, json, redirect, flash
 from slanguage.slanguage import SLanguageService
 from bus.bus_service import BusService
+import numpy as np
+from matplotlib import pyplot as plt
+from bus.lift_service import LiftService
+
+# 한글 폰트 사용을 위해서 세팅
+from matplotlib import font_manager, rc
+font_path = "C:/Windows/Fonts/H2GPRM.TTF"
+font = font_manager.FontProperties(fname=font_path).get_name()
+rc('font', family=font)
 
 app = Flask(__name__)
 sLanguageService = SLanguageService()
 busService = BusService()
+lift = LiftService()
 
 # 인덱스화면 연결
 app.secret_key = 'asfaf'  # 세션 사용시 시크릿 키 설정
@@ -123,7 +133,28 @@ def kakao():
 
     return redirect('/sign/main')
 
+@app.route('/bus/lift')
+def graph():
+    img_path = 'static/countsOfLift.png'
+    x, y = lift.count()
+    fig, ax = plt.subplots()
+    idx = np.arange(len(x))
+    fig = plt.figure(figsize=(10, 7))
+    ax = plt.tick_params(bottom=False, top=True, labelbottom=False, labeltop=True)
+    plt.barh(idx, y, color = 'darkviolet')
+    plt.yticks(idx, x)
+    plt.xticks(np.arange(1, 20, 2))
+    fig.savefig(img_path)
+    img_path = '/' + img_path
 
+    res = lift.station()
+    return render_template('station_info.html', res=res, img_path=img_path)
+
+@app.route('/lift')
+def liftInfo():
+    station = request.args['name']
+    res = lift.stationInfo(station)
+    return render_template('lift_info.html', res=res)
 
 
 
