@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request
 from slanguage.slanguage import SLanguageService
 from bus.bus_main import bp as bus_bp
@@ -29,16 +28,6 @@ def sindex():
     res = sLanguageService.get_all()
     return render_template('sign_main.html', res=res, enumerate=enumerate)
 
-
-# 버스 메인 연결메서드
-@app.route('/bindex')
-def bindex():
-    # 버스 전체리스트
-    res = busService.get_all()
-    return render_template('bus_main.html', res=res)
-
-
-
 # 상세 수어 페이지연결
 @app.route('/search')
 def search():
@@ -57,7 +46,6 @@ def search():
         flash("검색어를 올바르게 입력하세요 : [ Null or 띄어쓰기 or 없는 키워드 ]")
         return redirect('/sign/main')
     return render_template('search.html', result=result, title1=title)
-
 
 # 카톡 보내는 메서드 - 수화
 @app.route('/kakao')
