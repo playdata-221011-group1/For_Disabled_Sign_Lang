@@ -27,6 +27,4 @@ class BusService:
 
 
     def get_by_bus(self):
-
-
         pass

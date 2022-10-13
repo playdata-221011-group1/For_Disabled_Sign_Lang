@@ -36,4 +36,8 @@ footer {
   color: #fff;
   background-color: #d43076;
   border-color: #d43076;
+    font-weight: 700;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
 }

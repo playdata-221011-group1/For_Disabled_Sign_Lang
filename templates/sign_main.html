@@ -1,7 +1,7 @@
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         <script>
-            alert('{{messages[0]}}')
+        alert('{{messages[0]}}')
         </script>
     {% endif %}
 {% endwith %}
@@ -12,6 +12,7 @@
     <title>Title</title>
 </head>
 <body>
+ <div class="s128">
 <h3>수어 인덱스</h3>
 
 <form action="/search" method="get">
@@ -30,6 +31,7 @@
     <li><a href="/search?title={{i.title}}">{{i.alternativeTitle}}</a></li>
         {% endfor %}
 </ul>
+ </div>
 </body>
 
 </html>

@@ -19,11 +19,8 @@ app.secret_key = 'asfaf'  # 세션 사용시 시크릿 키 설정
 app.register_blueprint(bus_bp)
 # 메인페이지 연결메서드
 @app.route("/")
-
 def index():
     return render_template('index.html')
-
-
 
 # 수화 메인 연결메서드
 @app.route('/sign/main')
