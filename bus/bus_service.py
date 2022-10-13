@@ -2,6 +2,9 @@
 import requests
 import json
 import pandas as pd
+from bs4 import BeautifulSoup
+import xmltodict
+
 
 class BusService:
     def trans_list(self):
@@ -27,3 +30,96 @@ class BusService:
         print(trans_pd)
 
         return trans
+
+class LowBusService:
+    # def low_bus_list(self):
+    #     api_key = 'BYgs6%2FjSL0du1z8yK4GxYdW1SepukkJ0gXtUP3tGUQpjThEU4JeQKRlspdSnxTWcjia6U6r5oPxW%2F7tK7HZ2sg%3D%3D'
+    #     url = 'http://ws.bus.go.kr/api/rest/stationinfo/getLowStationByName?ServiceKey='
+    #     url += api_key
+    #     html = requests.get(url).text
+    #     html2 = xmltodict.parse(html)
+    #     res1 = json.dumps(html2)
+    #     res2 = json.loads(res1)
+    #
+    #     data = res2['ServiceResult']
+    #     data2 = data['msgBody']
+    #     data3 = data2['itemList'][0]
+    #     ################################
+    #     b_api_key = 'BYgs6%2FjSL0du1z8yK4GxYdW1SepukkJ0gXtUP3tGUQpjThEU4JeQKRlspdSnxTWcjia6U6r5oPxW%2F7tK7HZ2sg%3D%3D'
+    #     b_url = 'http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?ServiceKey='
+    #     b_url += b_api_key
+    #     b_html = requests.get(b_url).text
+    #     b_html2 = xmltodict.parse(b_html)
+    #     b_res1 = json.dumps(b_html2)
+    #     b_res2 = json.loads(b_res1)
+    #
+    #     b_data = b_res2['ServiceResult']
+    #     b_data2 = b_data['msgBody']
+    #     b_data3 = b_data2['itemList'][0]
+    #
+    #
+    #     return data3 , b_data3
+
+    def low_bus_list(self):
+        # 버스이름으로 정보 검색
+        api_key = 'BYgs6%2FjSL0du1z8yK4GxYdW1SepukkJ0gXtUP3tGUQpjThEU4JeQKRlspdSnxTWcjia6U6r5oPxW%2F7tK7HZ2sg%3D%3D'
+        url = 'http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?ServiceKey='
+        url += api_key
+        html = requests.get(url).text
+        html
+
+        return html
+
+    def makeUrl(cmd, params):  # 수행하고 싶은 기능에 맞게 url 변경해줌
+        url = 'http://ws.bus.go.kr/api/rest/'
+        u = url
+        u += cmd
+        for c in params:
+            u += c
+        return u
+
+    def getArsIdByStName(self):  # 정거장명을 파람으로 넣으면 arsId 반환
+        api_key = 'BYgs6%2FjSL0du1z8yK4GxYdW1SepukkJ0gXtUP3tGUQpjThEU4JeQKRlspdSnxTWcjia6U6r5oPxW%2F7tK7HZ2sg%3D%3D'
+        cmd = 'stationinfo/getLowStationByName'  # 'stationinfo/getStationByName'
+        params = ['?ServiceKey=' + api_key, '&stSrch=' + "독산역"] ###
+        u = LowBusService.makeUrl(cmd, params)
+        html = requests.get(u).text  # url에 요청
+        root = BeautifulSoup(html, 'lxml-xml')
+        code = root.find('headerCd').get_text()
+        st_arsid = []
+        if code == '0':
+            items = root.find_all('itemList')  # 배열
+            for item in items:
+                stNm = item.find('stNm').get_text()
+                if "독산역" == stNm: ###
+                    id = item.find('arsId').get_text()
+                    st_arsid.append(id)
+        else:
+            print('error code:', code)
+        return st_arsid
+
+    def getBusListByStArsid(self):
+        api_key = 'BYgs6%2FjSL0du1z8yK4GxYdW1SepukkJ0gXtUP3tGUQpjThEU4JeQKRlspdSnxTWcjia6U6r5oPxW%2F7tK7HZ2sg%3D%3D'
+        cmd = 'stationinfo/getRouteByStation'  # stationinfo/getLowStationByName
+        params = ['?ServiceKey=' + api_key, '&arsId=' + "18643"] ###
+        u = LowBusService.makeUrl(cmd, params)
+        html = requests.get(u).text  # url에 요청
+        root = BeautifulSoup(html, 'lxml-xml')
+        code = root.find('headerCd').get_text()
+        bus = []
+        if code == '0':
+            items = root.find_all('itemList')  # 배열
+            for item in items:
+                busNm = item.find('busRouteNm').get_text()
+                bus.append(busNm)
+            return bus
+        else:
+            print('error code:', code)
+
+    def getBusStopName(self):
+        arsid = LowBusService.getArsIdByStName("독산역") ###
+        for a in arsid:
+            busList = LowBusService.getBusListByStArsid(a)
+            print("독산역", ' 정거장에 정거하는 버스 목록') ###
+            for b in busList:
+                print(b)
