@@ -1,0 +1,50 @@
+.fuck{
+font-size:10px;
+}
+td{
+ text-decoration-line: none;
+ color:black;
+}
+
+button {
+    margin: 20px;
+}
+
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-outline {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-indigo {
+    background-color: #FFFF00;
+    color: #000000;
+}
+
+.w-btn-indigo-outline {
+    border: 3px solid aliceblue;
+    color: #1e6b7b;
+}
+
+.w-btn-indigo-outline:hover {
+    color: #1e6b7b;
+    background: aliceblue;
+}
