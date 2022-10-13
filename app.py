@@ -1,7 +1,5 @@
-from flask import Flask, render_template, request
-from slanguage.slanguage import SLanguageService
-from bus.bus_main import bp as bus_bp
 from bus.low_bus_main import bp as low_bus_bp
+from bus.bus_main import bp as bus_bp
 import requests
 from flask import Flask, render_template, request, json, redirect, flash
 from slanguage.slanguage import SLanguageService
@@ -155,6 +153,7 @@ def liftInfo():
     station = request.args['name']
     res = lift.stationInfo(station)
     return render_template('lift_info.html', res=res)
+
 
 
 

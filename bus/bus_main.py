@@ -12,8 +12,15 @@ def bus_main():
 
     return render_template("bus_main.html", trans=trans)
 
-
-@bp.route('/low')
+@bp.route('/station')
 def low_bus():
+    station = request.args.get('station')
     low_list = low_service.getBusStopName()
-    return render_template('bus_low.html', low=low_list)
+    res = low_service.low_bus_list()
+    return render_template('bus_low.html', low=low_list, station=station , res=res)
+
+@bp.route('/station1')
+def station_list():
+    res = low_service.low_bus_list()
+    return render_template('station.html',res=res)
+
