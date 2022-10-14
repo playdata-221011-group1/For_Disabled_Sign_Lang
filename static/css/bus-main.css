@@ -24,7 +24,7 @@ body {
     font-weight: bold;
     text-align: center;
     padding: 30px;
-    background-image: url(https://cdn.sideview.co.kr/news/photo/202105/7600_5895_2845.jpg);
+    background: #f4b8d0;
     display: table-cell;
 }
 
@@ -274,7 +274,7 @@ body {
   font-weight: 300;
   line-height: 1.42em;
   color:#000;
-  background-color:#FFFFFF;
+  background-color:#f4b8d0;
 }
 
 h1 {
