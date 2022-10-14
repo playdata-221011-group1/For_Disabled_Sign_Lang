@@ -14,6 +14,7 @@ font_path = "C:/Windows/Fonts/H2GPRM.TTF"
 font = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font)
 
+
 app = Flask(__name__)
 sLanguageService = SLanguageService()
 busService = BusService()
@@ -25,6 +26,7 @@ app.secret_key = 'asfaf'  # 세션 사용시 시크릿 키 설정
 # 생성한 블루프린트를 flask 객체에 등록
 app.register_blueprint(bus_bp)
 app.register_blueprint(low_bus_bp)
+
 # 메인페이지 연결메서드
 @app.route("/")
 def index():
@@ -36,7 +38,6 @@ def sindex():
     # 수화 전체리스트 numOfRows로 데이터 양 조절가능
     res = sLanguageService.get_all()
     return render_template('sign_main.html', res=res, enumerate=enumerate)
-
 
 # 버스 메인 연결메서드
 @app.route('/bindex')
@@ -98,10 +99,6 @@ def kakao():
         # with open("kakao_code.json", "r") as fp:
         #     tokens = json.load(fp)
 
-
-
-
-
         url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
         #'U9H6buL9TAMQks1oCSxja8GwUjteLotV_tBaQ_rlCisM0wAAAYPPEvlA'
         # 사용자 토큰
@@ -153,9 +150,6 @@ def liftInfo():
     station = request.args['name']
     res = lift.stationInfo(station)
     return render_template('lift_info.html', res=res)
-
-
-
 
 
 if __name__ == '__main__':
