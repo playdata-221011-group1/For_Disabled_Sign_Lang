@@ -274,7 +274,11 @@ body {
   font-weight: 300;
   line-height: 1.42em;
   color:#000;
+<<<<<<< HEAD
   background-color:#FFFFFF;
+=======
+  background-color:#f4b8d0;
+>>>>>>> 35c29e9f50e83a332e8bddac269378f825a8df9e
 }
 
 h1 {

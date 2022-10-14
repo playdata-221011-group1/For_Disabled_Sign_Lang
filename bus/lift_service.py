@@ -18,7 +18,6 @@ class LiftService:
         for s in self.data:
             if s['STATION_NM'] not in stationNm:
                 stationNm.append(s['STATION_NM'])
-        print(stationNm)
         return stationNm
 
     def count(self):
