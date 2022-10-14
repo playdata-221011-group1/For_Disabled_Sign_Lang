@@ -16,13 +16,13 @@
         <th><h1>URL:</h1></th>
     </tr>
     </thead>
-    {% for i in bus_list %}
+    {% for i in trans %}
     <tbody>
     <tr>
         <td>{{i.SIGUN_NM}}</td>
         <td>{{i.INST_NM}}</td>
         <td>{{i.TELNO}}</td>
-        <td>{{i.HMPG_URL}}</td>
+        <td><a href="{{i.HMPG_URL}}">{{i.HMPG_URL}}</td>
     </tr>
     </tbody>
     {% endfor %}

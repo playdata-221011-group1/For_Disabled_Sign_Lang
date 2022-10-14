@@ -4,7 +4,7 @@ from bus.bus_main import bp as bus_bp
 import requests
 from flask import Flask, render_template, request, json, redirect, flash
 from For_Disabled_Sign_Lang.slanguage.slanguage import SLanguageService
-from For_Disabled_Sign_Lang.bus.bus import BusService
+from  .bus.bus import BusService
 
 app = Flask(__name__)
 app.secret_key = 'asdf'
