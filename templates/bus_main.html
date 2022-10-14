@@ -1,3 +1,10 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert('{{messages[0]}}')
+        </script>
+    {% endif %}
+{% endwith %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +13,13 @@
     <link href="../static/css/bus-main.css" rel="stylesheet">
 </head>
 <body>
-<h1 style="color:black;">Move Helper</h1>
+<h1 style="color:black;">Move Helper</h1><br>
+<!--여기에서 추가-->
+<form action="/bus/station" method="get">
+    저상버스 정류장 검색 : <input type="text" name="station">
+    <input type="submit" value="검색">
+</form>
+
 <table class="container">
     <thead>
     <tr>
@@ -16,16 +29,16 @@
         <th><h1>URL:</h1></th>
     </tr>
     </thead>
-    {% for i in bus_list %}
     <tbody>
+    {% for i in trans %}
     <tr>
         <td>{{i.SIGUN_NM}}</td>
         <td>{{i.INST_NM}}</td>
         <td>{{i.TELNO}}</td>
-        <td>{{i.HMPG_URL}}</td>
+        <td class="td-url">{{i.HMPG_URL}}</td>
     </tr>
-    </tbody>
     {% endfor %}
+    </tbody>
 </table>
 <button onclick="location.href = '/' " class="w-btn w-btn-indigo" type="button">돌아가기</button>
 </body>

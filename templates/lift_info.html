@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../static/css/lift-detail.css" rel="stylesheet">
+</head>
+<body>
+    <table border="1">
+        <tr><th>역명</th><th>승강기명</th><th>운행구간</th><th>설치위치</th><th>운행상태</th><th>승강기구분</th></tr>
+        {% for s in res: %}
+        <tr>
+            <td>{{s['STATION_NM']}}</td>
+            <td>{{s['FACI_NM']}}</td>
+            <td>{{s['STUP_LCTN']}}</td>
+            <td>{{s['LOCATION']}}</td>
+            <td>{{s['USE_YN']}}</td>
+            <td>{{s['GUBUN']}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

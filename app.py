@@ -1,15 +1,23 @@
-from flask import Flask, render_template, request
-from slanguage.slanguage import SLanguageService
-from bus.bus_main import bp as bus_bp
 from bus.low_bus_main import bp as low_bus_bp
+from bus.bus_main import bp as bus_bp
 import requests
 from flask import Flask, render_template, request, json, redirect, flash
 from slanguage.slanguage import SLanguageService
 from bus.bus_service import BusService
+import numpy as np
+from matplotlib import pyplot as plt
+from bus.lift_service import LiftService
+
+# 한글 폰트 사용을 위해서 세팅
+from matplotlib import font_manager, rc
+font_path = "C:/Windows/Fonts/H2GPRM.TTF"
+font = font_manager.FontProperties(fname=font_path).get_name()
+rc('font', family=font)
 
 app = Flask(__name__)
 sLanguageService = SLanguageService()
 busService = BusService()
+lift = LiftService()
 
 # 인덱스화면 연결
 app.secret_key = 'asfaf'  # 세션 사용시 시크릿 키 설정
@@ -82,9 +90,9 @@ def kakao():
         response = requests.post(url, data=data)
         tokens = response.json()
 
-        # kakao_code.json 파일 저장
-        with open("kakao_code.json", "w") as fp:
-            json.dump(tokens, fp)
+        # # kakao_code.json 파일 저장
+        # with open("kakao_code.json", "w") as fp:
+        #     json.dump(tokens, fp)
 
         # #토큰 읽어오기
         # with open("kakao_code.json", "r") as fp:
@@ -98,7 +106,7 @@ def kakao():
         #'U9H6buL9TAMQks1oCSxja8GwUjteLotV_tBaQ_rlCisM0wAAAYPPEvlA'
         # 사용자 토큰
         headers = {
-            "Authorization": "Bearer " + 'U9H6buL9TAMQks1oCSxja8GwUjteLotV_tBaQ_rlCisM0wAAAYPPEvlA' ### 유효시간 6시간 / 발표자가 다시 발급 받아야 할 수도 있음  ###
+            "Authorization": "Bearer " + 'mU6glLt2AcFnKq_FAXNqTRTbeTljczKALOTqEsvRCinJYAAAAYPTjlhG' ### 유효시간 6시간 / 발표자가 다시 발급 받아야 할 수도 있음  ###
         }
 
         data = {
@@ -123,6 +131,28 @@ def kakao():
 
     return redirect('/sign/main')
 
+@app.route('/bus/lift')
+def graph():
+    img_path = 'static/countsOfLift.png'
+    x, y = lift.count()
+    fig, ax = plt.subplots()
+    idx = np.arange(len(x))
+    fig = plt.figure(figsize=(10, 7))
+    ax = plt.tick_params(bottom=False, top=True, labelbottom=False, labeltop=True)
+    plt.barh(idx, y, color = 'darkviolet')
+    plt.yticks(idx, x)
+    plt.xticks(np.arange(1, 20, 2))
+    fig.savefig(img_path)
+    img_path = '/' + img_path
+
+    res = lift.station()
+    return render_template('station_info.html', res=res, img_path=img_path)
+
+@app.route('/lift')
+def liftInfo():
+    station = request.args['name']
+    res = lift.stationInfo(station)
+    return render_template('lift_info.html', res=res)
 
 
 
