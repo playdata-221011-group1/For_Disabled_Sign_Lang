@@ -65,7 +65,7 @@ def search():
     return render_template('search.html', result=result, title1=title)
 
 # 카톡 보내는 메서드 - 수화
-@app.route('/kakao')
+@app.route('/kakao1')
 def kakao():
     # input 버튼 파라미터
     kakao = request.args.get('kakao')

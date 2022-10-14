@@ -5,24 +5,42 @@
         </script>
     {% endif %}
 {% endwith %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>title</title>
+    <link href="../static/css/bus-main.css" rel="stylesheet">
 </head>
 <body>
+<div style="position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);">
+<h3 style="color:black; margin-top: 30%;">{{station}}에 정차하는 버스</h3><hr>
 
-<h3>{{station}}에 정차하는 버스</h3>
-<form action="/kakao" method="get">
-    카카오톡 보내기 : <input type="text" name="station">
-    <input type="submit" value="카톡전송">
+
+
+<form action="/bus/kakao" method="get">
+    <input type="hidden" name="station" value="{{station}}">
+<!--    <input type="submit" value="">-->
+    <button onclick="location.href = '/' " class="w-btn w-btn-indigo" type="submit">카톡전송</button>
 </form>
-{% for i in low %}
-    {{i}}
-{% endfor %}
-<!--{{station}}-->
-<!--{{res}}-->
+
+
+
+<table class="container" style="text-align:center">
+
+    <tbody>
+    {% for i in low %}
+    <tr>
+        <td>{{i}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<button onclick="location.href = '/' " class="w-btn w-btn-indigo" type="button">홈으로</button>
+<button onclick="location.href = '/bus/main' " class="w-btn w-btn-indigo" type="button">버스검색으로</button>
+</div>
 </body>
 </html>

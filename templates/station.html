@@ -4,27 +4,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
       <link href="../static/css/lift-detail.css" rel="stylesheet">
+    <link href="../static/css/bus-main.css" rel="stylesheet">
 </head>
 <body>
-<h3>station 페이지</h3>
-<table border="1">
+<h3>정류장 리스트</h3>
+<table border="1" class="container">
     <tr>
     {% for i in res %}
-    <tr><td>{{i.stNm}}</td></tr>
+    <tr><td><a href="/bus/station?station={{i.stNm}}" style="text-decoration:none">{{i.stNm}}</a></td></tr>
     {% endfor %}
     </tr>
 </table>
 
-<table>
 
-    {% for i in res %}
-    <tbody>
-    <tr>
-        <td>정류장이름 : {{i.stNm}}</td>
-    </tr>
-    </tbody>
-    {% endfor %}
-</table>
 <button onclick="location.href = '/' " class="w-btn w-btn-indigo" type="button">돌아가기</button>
 
 </body>
