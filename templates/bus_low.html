@@ -1,3 +1,11 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert('{{messages[0]}}')
+        </script>
+    {% endif %}
+{% endwith %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +13,12 @@
     <title>Title</title>
 </head>
 <body>
-<h3>저상버스 페이지</h3>
 
+<h3>{{station}}에 정차하는 버스</h3>
+<form action="/kakao" method="get">
+    카카오톡 보내기 : <input type="text" name="station">
+    <input type="submit" value="카톡전송">
+</form>
 {% for i in low %}
     {{i}}
 {% endfor %}

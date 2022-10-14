@@ -90,9 +90,9 @@ def kakao():
         response = requests.post(url, data=data)
         tokens = response.json()
 
-        # kakao_code.json 파일 저장
-        with open("kakao_code.json", "w") as fp:
-            json.dump(tokens, fp)
+        # # kakao_code.json 파일 저장
+        # with open("kakao_code.json", "w") as fp:
+        #     json.dump(tokens, fp)
 
         # #토큰 읽어오기
         # with open("kakao_code.json", "r") as fp:
@@ -106,7 +106,7 @@ def kakao():
         #'U9H6buL9TAMQks1oCSxja8GwUjteLotV_tBaQ_rlCisM0wAAAYPPEvlA'
         # 사용자 토큰
         headers = {
-            "Authorization": "Bearer " + 'U9H6buL9TAMQks1oCSxja8GwUjteLotV_tBaQ_rlCisM0wAAAYPPEvlA' ### 유효시간 6시간 / 발표자가 다시 발급 받아야 할 수도 있음  ###
+            "Authorization": "Bearer " + 'mU6glLt2AcFnKq_FAXNqTRTbeTljczKALOTqEsvRCinJYAAAAYPTjlhG' ### 유효시간 6시간 / 발표자가 다시 발급 받아야 할 수도 있음  ###
         }
 
         data = {

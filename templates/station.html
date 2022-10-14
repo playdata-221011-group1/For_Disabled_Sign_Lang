@@ -6,23 +6,11 @@
 </head>
 <body>
 <h3>station 페이지</h3>
-{{res.stNm}}
-
 <table border="1">
-    <tr>
-    {% for i in res %}
-    <tr><td>{{i.stNm}}</td></tr>
-    {% endfor %}
-    </tr>
-</table>
-
-
-<table>
-
     {% for i in res %}
     <tbody>
     <tr>
-        <td>{{i.stNm}}</td>
+        <td>정류장이름 : {{i.stNm}}</td>
     </tr>
     </tbody>
     {% endfor %}
