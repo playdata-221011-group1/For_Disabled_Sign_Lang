@@ -14,7 +14,6 @@ font_path = "C:/Windows/Fonts/H2GPRM.TTF"
 font = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font)
 
-
 app = Flask(__name__)
 sLanguageService = SLanguageService()
 busService = BusService()
