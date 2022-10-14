@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+      <link href="../static/css/lift-detail.css" rel="stylesheet">
 </head>
 <body>
 <h3>station 페이지</h3>
 <table border="1">
+    <tr>
+    {% for i in res %}
+    <tr><td>{{i.stNm}}</td></tr>
+    {% endfor %}
+    </tr>
+</table>
+
+<table>
+
     {% for i in res %}
     <tbody>
     <tr>
@@ -15,5 +25,7 @@
     </tbody>
     {% endfor %}
 </table>
+<button onclick="location.href = '/' " class="w-btn w-btn-indigo" type="button">돌아가기</button>
+
 </body>
 </html>

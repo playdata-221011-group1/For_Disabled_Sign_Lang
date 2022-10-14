@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+        <link href="../static/css/bus-main.css" rel="stylesheet">
 </head>
 <body>
     <h3>지하철 교통약자 이용시설(승강기) 가동현황 조회</h3>
     <img src="{{img_path}}">
     <table border="1">
-        <ul>
+        <tr>
+    <h3 style="margin-bottom:15px;">알고 싶으신 지하철 역을 클릭해 주세요</h3>
       {% for s in res: %}
-            <li style="width:10%;"><a href="/lift?name={{s}}">{{s}}</a></li>
+            <td ><a style="text-decoration-line: none;
+ color:black;"href="/lift?name={{s}}">{{s}}</a></td>
+            {% if s == 16 %}
+            echo"</tr><tr>";
+        `   {% endif %}
         {% endfor %}
-            </ul>
+        </tr>
+
 </table>
 </body>
 </html>
+
+
