@@ -139,10 +139,10 @@ def graph():
     idx = np.arange(len(x))
     fig = plt.figure(figsize=(10, 7))
     ax = plt.tick_params(bottom=False, top=True, labelbottom=False, labeltop=True)
-    plt.barh(idx, y, color = 'darkviolet')
-    plt.yticks(idx, x)
-    plt.xticks(np.arange(1, 20, 2))
-    fig.savefig(img_path)
+    plt.barh(idx, y, color = '#6e6e6e')
+    plt.yticks(idx, x, color='black')
+    plt.xticks(np.arange(1, 20, 2), color='black')
+    fig.savefig(img_path, transparent=True)
     img_path = '/' + img_path
 
     res = lift.station()

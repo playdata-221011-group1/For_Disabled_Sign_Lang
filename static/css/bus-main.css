@@ -17,7 +17,7 @@
 body {
     text-align: center;
     padding: 30px;
-    background: whitesmoke;
+    background: #f4b8d0;
     display: table-cell;
 }
 
@@ -266,8 +266,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   line-height: 1.42em;
-  color:#A7A1AE;
-  background-color:#FFFFFF;
+  color:#000;
+  background-color:#f4b8d0;
 }
 
 h1 {
