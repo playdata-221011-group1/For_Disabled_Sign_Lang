@@ -7,12 +7,13 @@
     <link href="../static/css/bus-main.css" rel="stylesheet">
 </head>
 <body>
+<div style="margin-left:500px;">
 <h3>버스정류장 정보</h3>
-<table border="1" class="container">
+<table border="1" class="container" style="padding-top: 0; " >
     <tr>
-    {% for idx,i in enumerate(res) %}
+    {% for i in res %}
 
-            <tr><td><a href="/bus/station?station={{i.stNm}}" style="text-decoration:none">{{idx}} : {{i.stNm}}</a></td></tr>
+            <tr><td><a href="/bus/station?station={{i.stNm}}" style="text-decoration:none">{{i.stNm}}</a></td></tr>
 
     </tr>
     {% endfor %}
@@ -20,6 +21,6 @@
 
 
 <button onclick="location.href = '/' " class="w-btn w-btn-indigo" type="button">돌아가기</button>
-
+</div>
 </body>
 </html>

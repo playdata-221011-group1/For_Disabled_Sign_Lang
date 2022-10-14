@@ -114,7 +114,7 @@ def send_kakao():
         url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
         # 사용자 토큰
         headers = {
-            "Authorization": "Bearer " + 'FNFNutUz2EN-Rk-D4AuOVZQ_0TiJFrtQ0m1wtQRnCj10lwAAAYPTqzCP'
+            "Authorization": "Bearer " + '13cRAnmTAoESXPTpdQxDoiJ1Yru248eQvKwc3HaqCj11WgAAAYPU-gYk'
             ### 유효시간 6시간 / 발표자가 다시 발급 받아야 할 수도 있음  ###
         }
 
@@ -139,5 +139,5 @@ def send_kakao():
 
 
 
-    return render_template('bus_low.html', low=low_list, station=station )
+    return render_template('bus_low.html', low=low_list, station=station , enumerate=enumerate)
 

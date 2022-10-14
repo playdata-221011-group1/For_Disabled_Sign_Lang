@@ -123,7 +123,6 @@ class LowBusService:
         arsid = LowBusService.getArsIdByStName(station) ###
         for a in arsid:
             busList = LowBusService.getBusListByStArsid(a)
-            print(station + ": 잘 출력됨") ###
             list=[]
             for b in busList:
                 list.append(b)

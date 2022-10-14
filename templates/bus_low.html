@@ -16,9 +16,9 @@
 <div style="
     position: absolute;
     margin-top:5%;
-    top: 40%;
+
     left: 50%;
-    transform: translate(-50%, -50%);">
+    transform: translate(-50%);">
 <h3 style="color:black;">{{station}}에 정차하는 버스</h3><hr>
 
 
@@ -30,21 +30,21 @@
 </form>
 
 
+<table class="container" style="text-align:center;">
 
-<table class="container" style="text-align:center">
+    {% for idx,i in enumerate(low, start=1) %}
+    {% if idx <=10 %}
+    <tr >
 
-    <tbody>
-    {% for idx,i in enumerate(low) %}
-    <tr>
-        {% if idx <=10 %}
             <td>{{i}}</td>
-        {% endif %}
+
     </tr>
+    {% endif %}
     {% endfor %}
-    </tbody>
 </table>
 <button onclick="location.href = '/' " class="w-btn w-btn-indigo" type="button">홈으로</button>
 <button onclick="location.href = '/bus/main' " class="w-btn w-btn-indigo" type="button">버스검색으로</button>
 </div>
+
 </body>
 </html>
