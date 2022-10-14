@@ -10,10 +10,12 @@
 <h3>정류장 리스트</h3>
 <table border="1" class="container">
     <tr>
-    {% for i in res %}
-    <tr><td><a href="/bus/station?station={{i.stNm}}" style="text-decoration:none">{{i.stNm}}</a></td></tr>
-    {% endfor %}
+    {% for idx,i in enumerate(res) %}
+
+            <tr><td><a href="/bus/station?station={{i.stNm}}" style="text-decoration:none">{{idx}} : {{i.stNm}}</a></td></tr>
+
     </tr>
+    {% endfor %}
 </table>
 
 

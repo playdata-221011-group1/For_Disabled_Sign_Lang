@@ -13,11 +13,13 @@
     <link href="../static/css/bus-main.css" rel="stylesheet">
 </head>
 <body>
-<div style="position: absolute;
+<div style="
+    position: absolute;
+    margin-top:5%;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);">
-<h3 style="color:black; margin-top: 30%;">{{station}}에 정차하는 버스</h3><hr>
+<h3 style="color:black;">{{station}}에 정차하는 버스</h3><hr>
 
 
 
@@ -32,9 +34,11 @@
 <table class="container" style="text-align:center">
 
     <tbody>
-    {% for i in low %}
+    {% for idx,i in enumerate(low) %}
     <tr>
-        <td>{{i}}</td>
+        {% if idx <=10 %}
+            <td>{{i}}</td>
+        {% endif %}
     </tr>
     {% endfor %}
     </tbody>

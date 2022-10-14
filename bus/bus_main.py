@@ -77,14 +77,14 @@ def low_bus():
         flash("존재하지 않는 정류장 or 정류장 이름이 다릅니다!!")
         return redirect('/bus/main')
 
-    return render_template('bus_low.html', low=low_list, station=station )
+    return render_template('bus_low.html', low=low_list, station=station,enumerate=enumerate )
 
 
 # 버스정류장 리스트 뿌려주는 메서드
 @bp.route('/station1')
 def station_list():
     res = low_service.low_bus_list()
-    return render_template('station.html', res=res)
+    return render_template('station.html', res=res, enumerate=enumerate)
 
 @bp.route('/kakao')
 def send_kakao():
